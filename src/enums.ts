@@ -9,7 +9,7 @@ export enum UserRequestType {
 
 export const Mods = {
     None           :0n,
-    NoFail         :1n,
+    NoFail         :1n << 0n,
     Easy           :1n << 1n,
     TouchDevice    :1n << 2n,
     Hidden         :1n << 3n,
