@@ -8,4 +8,5 @@ export * from './src/structures/UserEvent';
 export * from './src/utils/cdn';
 
 export * from './src/types/interfaces';
+export * from './src/types/osuApiTypes';
 export * from './src/enums';
