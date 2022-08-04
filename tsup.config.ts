@@ -5,7 +5,7 @@ export default defineConfig({
 	dts: true,
 	entryPoints: ['index.ts'],
 	format: ['esm', 'cjs'],
-	minify: true,
+	minify: false,
 	keepNames: false,
 	skipNodeModulesBundle: true,
 	sourcemap: true,
