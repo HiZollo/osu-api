@@ -2,6 +2,7 @@ import type { UserScoreRankCount } from "../types/interfaces";
 import type { APIUser } from "../types/osuApiTypes";
 import type { Client } from "../client/Client";
 import { UserEvent } from "./UserEvent";
+import { CDN } from "../utils/cdn";
 
 export class User {
     public readonly client: Client;
@@ -59,11 +60,11 @@ export class User {
     }
 
     public avatarURL() {
-        return `https://a.ppy.sh/${this.id}`;
+        return CDN.avatar(this.id);
     }
 
     public profileURL() {
-        return `https://osu.ppy.sh/users/${this.id}`;
+        return CDN.profile(this.id);
     }
 
     public async fetchBanner(force: boolean = false) {
