@@ -64,6 +64,10 @@ export class ModsBitField {
         return serialized;
     }
 
+    public isNone() {
+        return this.bitfield === 0n;
+    }
+
     public valueOf() {
         return this.bitfield;
     }
