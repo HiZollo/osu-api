@@ -1,6 +1,6 @@
 import { Mods } from "../enums";
 
-export type ModsResolvable = number | string | bigint | ModsBitField;
+export type ModsResolvable = number | string | bigint | ModsBitField | Array<ModsResolvable>;
 
 export class ModsBitField {
     static Flags = Mods;
@@ -15,8 +15,8 @@ export class ModsBitField {
         Mods.Hidden | Mods.HardRock | Mods.DoubleTime | Mods.Flashlight | Mods.FadeIn;
 
     public bitfield: bigint;
-    constructor(bits = 0n) {
-        this.bitfield = bits;
+    constructor(bits: ModsResolvable = 0n) {
+        this.bitfield = ModsBitField.resolve(bits);
     }
 
     public any(bit: ModsResolvable) {
@@ -69,6 +69,9 @@ export class ModsBitField {
     }
 
     public static resolve(bit: ModsResolvable): bigint {
+        if (Array.isArray(bit)) {
+            return bit.map(ModsBitField.resolve).reduce((acc, now) => acc | now, 0n);
+        }
         if (bit instanceof ModsBitField) {
             return bit.bitfield;
         }
