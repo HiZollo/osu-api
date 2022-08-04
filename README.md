@@ -1,0 +1,1 @@
+# @hizollo/osu-api
