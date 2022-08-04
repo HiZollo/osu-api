@@ -42,7 +42,7 @@ export class ModsBitField {
         return this;
     }
 
-    public remove(...bits: number[]) {
+    public remove(...bits: ModsResolvable[]) {
         let total: bigint = 0n;
         for (const bit of bits) {
             total |= ModsBitField.resolve(bit);
