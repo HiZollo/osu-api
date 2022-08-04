@@ -41,3 +41,24 @@ export const Mods = {
     ScoreV2        :1n << 29n,
     Mirror         :1n << 30n,
 }
+
+export enum BeatmapApprovedState {
+    Graveyard = -2,
+    WIP,
+    Pending,
+    Ranked,
+    Approved,
+    Qualified,
+    Loved
+}
+
+export enum BeatmapGenre {
+    Any, Unspecified, VideoGame, Anime, Rock, Pop, Other, Novelty,
+    HipHop = 9, Electronic, Metal, Classic, Folk, Jazz
+}
+
+export enum BeatmapLanguage {
+    Any, Unspecified, English, Japanese, Chinese,
+    Instrumental, Korean, French, German, Swedish,
+    Spanish, Italian, Russian, Polish, Other
+}

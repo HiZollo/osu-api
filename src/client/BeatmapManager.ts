@@ -1,7 +1,9 @@
 import type { APIGetBeatmapsRequestOptions, GetBeatmapsRequestOptions } from "../types/interfaces";
 import type { Client } from "./Client";
+import type { APIBeatmap } from "../types/osuApiTypes";
 import { toSqlDate } from '../utils/toSqlDate';
 import { ModsBitField } from "../structures/ModsBitField";
+import { Beatmap } from "../structures/Beatmap";
 
 export class BeatmapManager {
     public readonly client: Client;
@@ -26,8 +28,8 @@ export class BeatmapManager {
         const res = await this.client.request<APIGetBeatmapsRequestOptions>({
             path: 'get_beatmaps',
             queries
-        });
+        }) as Array<APIBeatmap>;
 
-        return res;
+        return res.map(v => new Beatmap(this.client, v));
     }
 }
