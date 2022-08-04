@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "test": "node test",
-    "build": "tsup"
+    "build": "tsup",
+    "docgen": "npx typedoc index.ts"
   },
   "repository": {
     "type": "git",
