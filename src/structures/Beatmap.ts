@@ -4,6 +4,7 @@ import type { APIBeatmap } from "../types/osuApiTypes";
 import type { User } from "./User";
 import { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage, GameMode, UserRequestType } from "../enums";
 import { CDN } from "../utils/cdn";
+import { Beatmapset } from "./Beatmapset";
 
 export class Beatmap {
     public readonly id: string;
@@ -117,7 +118,7 @@ export class Beatmap {
             beatmapsetId: this.beatmapsetId
         });
         
-        return set;
+        return new Beatmapset(this.client, this, set);
     }
 
 }
