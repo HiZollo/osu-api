@@ -6,7 +6,7 @@ import * as request from 'superagent';
 import { CDN } from "../utils/cdn";
 
 export class UserManager {
-    public client: Client;
+    public readonly client: Client;
     constructor(client: Client) {
         this.client = client;
     }
