@@ -1,5 +1,6 @@
 export * from './src/client/Client';
 export * from './src/client/UserManager';
+export * from './src/client/BeatmapManager';
 
 export * from './src/structures/ModsBitField';
 export * from './src/structures/User';
