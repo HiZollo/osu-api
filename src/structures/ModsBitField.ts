@@ -57,9 +57,9 @@ export class ModsBitField {
     }
 
     public serialize() {
-        const serialized = {};
+        const serialized: { [key: string]: boolean } = {};
         for (const [flag, bit] of Object.entries(ModsBitField.Flags)) {
-            serialized[flag] = this.has(bit);
+            serialized[flag as keyof typeof ModsBitField.Flags] = this.has(bit);
         }
         return serialized;
     }
@@ -81,7 +81,7 @@ export class ModsBitField {
         }
         if (typeof bit === 'number') return BigInt(bit);
         if (typeof bit === 'string') {
-            const a = ModsBitField.Flags[bit];
+            const a: bigint | undefined = ModsBitField.Flags[bit as keyof typeof ModsBitField.Flags];
             if (typeof a === 'undefined') throw new Error('INVALID_BITFIELD');
             return a;
         }

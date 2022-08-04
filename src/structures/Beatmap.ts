@@ -64,6 +64,7 @@ export class Beatmap {
         } else {
             this.approvedDate = new Date(data.approved_date);
         }
+        this.lastUpdate = new Date(data.last_update);
         this.artist = data.artist;
         this.title = data.title;
         this.creator = data.creator;

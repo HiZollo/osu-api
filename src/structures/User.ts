@@ -39,6 +39,7 @@ export class User {
         this.count100 = +data.count100;
         this.count50 = +data.count50;
         this.playcount = +data.playcount;
+        this.playtime = +data.total_seconds_played;
         this.rankedScore = +data.ranked_score;
         this.totalScore = +data.total_score;
         this.rank = +data.pp_rank;
