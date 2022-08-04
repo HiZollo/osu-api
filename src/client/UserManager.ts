@@ -1,7 +1,7 @@
 import { User } from "../structures/User";
-import { FetchUserBannerOptions, GetUserRequestOptions } from "../types/interfaces";
-import { APIUser } from "../types/osuApiTypes";
-import { Client } from "./Client";
+import type { FetchUserBannerOptions, GetUserRequestOptions } from "../types/interfaces";
+import type { APIUser } from "../types/osuApiTypes";
+import type { Client } from "./Client";
 import * as request from 'superagent';
 import { CDN } from "../utils/cdn";
 

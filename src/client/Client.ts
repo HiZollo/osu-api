@@ -1,4 +1,4 @@
-import { ClientOptions, OsuApiRequestOptions, RequestOptions } from '../types/interfaces';
+import type { ClientOptions, OsuApiRequestOptions, RequestOptions } from '../types/interfaces';
 import * as request from 'superagent';
 import { UserManager } from './UserManager'
 import { BeatmapManager } from './BeatmapManager';
