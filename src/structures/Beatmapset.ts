@@ -1,4 +1,4 @@
-import type { Client } from '../client/Client';
+import type { Client } from '../Client';
 import type { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage } from '../enums';
 import type { Beatmap } from './Beatmap';
 import type { User } from './User';

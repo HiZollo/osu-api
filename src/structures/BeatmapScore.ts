@@ -1,4 +1,4 @@
-import type { Client } from "../client/Client";
+import type { Client } from "../Client";
 import type { BeatmapScoreOtherInfo } from "../types/interfaces";
 import type { APIBeatmapScore, APIUserBestPerformanceScore } from "../types/osuApiTypes";
 import { URLBuilder } from "../utils/URLBuilder";

@@ -1,6 +1,6 @@
 import type { UserScoreRankCount } from "../types/interfaces";
 import type { APIUser } from "../types/osuApiTypes";
-import type { Client } from "../client/Client";
+import type { Client } from "../Client";
 import { UserEvent } from "./UserEvent";
 import { URLBuilder } from "../utils/URLBuilder";
 

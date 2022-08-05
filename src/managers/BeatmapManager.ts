@@ -1,5 +1,5 @@
 import type { APIGetBeatmapsRequestOptions, GetBeatmapsRequestOptions } from "../types/interfaces";
-import type { Client } from "./Client";
+import type { Client } from "../Client";
 import type { APIBeatmap } from "../types/osuApiTypes";
 import { toSqlDate } from '../utils/toSqlDate';
 import { ModsBitField } from "../structures/ModsBitField";

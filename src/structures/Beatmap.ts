@@ -1,4 +1,4 @@
-import type { Client } from "../client/Client";
+import type { Client } from "../Client";
 import type { BeatmapDiffculty, BeatmapObjectCount } from "../types/interfaces";
 import type { APIBeatmap } from "../types/osuApiTypes";
 import type { User } from "./User";

@@ -1,4 +1,4 @@
-import type { Client } from "../client/Client";
+import type { Client } from "../Client";
 import type { APIBasicScore } from "../types/osuApiTypes";
 import { GameMode, ScoreRank } from "../enums";
 import { ModsBitField } from "./ModsBitField";

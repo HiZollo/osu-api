@@ -1,5 +1,5 @@
 import type { APIGetScoresRequestOptions, GetScoreRequestOptions } from "../types/interfaces";
-import type { Client } from "./Client";
+import type { Client } from "../Client";
 import type { APIBeatmapScore } from "../types/osuApiTypes";
 import { ModsBitField } from "../structures/ModsBitField";
 import { BeatmapScore } from "../structures/BeatmapScore";

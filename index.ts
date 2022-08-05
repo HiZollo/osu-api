@@ -1,7 +1,7 @@
-export * from './src/client/Client';
-export * from './src/client/UserManager';
-export * from './src/client/BeatmapManager';
-export * from './src/client/ScoreManager';
+export * from './src/Client';
+export * from './src/managers/UserManager';
+export * from './src/managers/BeatmapManager';
+export * from './src/managers/ScoreManager';
 
 export * from './src/structures/ModsBitField';
 export * from './src/structures/User';
