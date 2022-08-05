@@ -64,5 +64,5 @@ export enum BeatmapLanguage {
 }
 
 export enum ScoreRank {
-    XH, X, SH, S, A, B, C, D
+    XH, X, SH, S, A, B, C, D, F
 }

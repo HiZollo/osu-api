@@ -116,3 +116,17 @@ export interface GetUserBestRequstOptions {
     type?: UserRequestType;
     limit?: number;
 }
+
+export interface APIGetUserRecentRequestOptions extends OsuApiRequestOptions {
+    u: string;
+    m?: GameMode;
+    type?: UserRequestType;
+    limit?: number;
+}
+
+export interface GetUserRecentRequestOptions {
+    user: string;
+    mode?: GameMode;
+    type?: UserRequestType;
+    limit?: number;
+}

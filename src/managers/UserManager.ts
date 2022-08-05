@@ -1,10 +1,10 @@
-import { User } from "../structures/User";
-import type { APIGetUserBestRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRequestOptions } from "../types/interfaces";
-import type { APIUser, APIUserBestPerformanceScore } from "../types/osuApiTypes";
+import type { APIGetUserBestRequestOptions, APIGetUserRecentRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRecentRequestOptions, GetUserRequestOptions } from "../types/interfaces";
+import type { APIUser, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
 import type { Client } from "../Client";
 import * as request from 'superagent';
 import { URLBuilder } from "../utils/URLBuilder";
 import { BeatmapScore } from "../structures/BeatmapScore";
+import { User } from "../structures/User";
 
 export class UserManager {
     public readonly client: Client;
@@ -55,6 +55,22 @@ export class UserManager {
             path: 'get_user_best',
             queries
         }) as Array<APIUserBestPerformanceScore>;
+
+        return res.map(v => new BeatmapScore(this.client, v, { mode: options.mode }));
+    }
+
+    public async getUserRecent(options: GetUserRecentRequestOptions) {
+        const queries = {
+            u: options.user,
+            m: options.mode,
+            type: options.type,
+            limit: options.limit
+        }
+
+        const res = await this.client.request<APIGetUserRecentRequestOptions>({
+            path: 'get_user_recent',
+            queries
+        }) as Array<APIUserRecentPlayedScore>;
 
         return res.map(v => new BeatmapScore(this.client, v, { mode: options.mode }));
     }
