@@ -61,12 +61,80 @@ export interface APIBeatmap {
     language_id: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | '13' | '14';
     favourite_count: string;
     rating: string;
-    download_unavailable: string;
-    audio_unavailable: string;
+    download_unavailable: '0' | '1';
+    audio_unavailable: '0' | '1';
     playcount: string;
     passcount: string;
     max_combo: string | null;
     diff_aim: string | null;
     diff_speed: string | null;
     difficultyrating: string | null;
+}
+
+export interface APIBasicScore {
+    score: string;
+    maxcombo: string;
+    count50: string;
+    count100: string;
+    count300: string;
+    countmiss: string;
+    countkatu: string
+    countgeki: string
+    perfect: '0' | '1';
+    enabled_mod: string;
+    user_id: string;
+    date: string;
+    rank: string;
+}
+
+export interface APIUserRecentPlayedScore extends APIBasicScore {
+    beatmap_id: string;
+}
+
+export interface APIUserBestPerformanceScore extends APIUserRecentPlayedScore {
+    score_id: string;
+    pp: string;
+    replay_available: '0' | '1';
+}
+
+export interface APIBeatmapScore extends APIBasicScore {
+    score_id: string;
+    username: string;
+    pp: string;
+    replay_available: '0' | '1';
+}
+
+export interface APIMatchScore extends Omit<APIBasicScore, "date"> {
+    solt: string;
+    team: '0' | '1' | '2';
+    pass: '0' | '1';
+}
+
+export interface APIMatchData {
+    match_id: string;
+    name: string;
+    start_time: string;
+    end_time: string | null;
+}
+
+export interface APIMatchGameData {
+    game_id: string;
+    start_time: string;
+    end_time: string;
+    beatmap_id: string;
+    play_mode: '0' | '1' | '2' | '3';
+    match_type: string;
+    scoring_type: '0' | '1' | '2' | '3';
+    team_type: '0' | '1' | '2' | '3';
+    mods: string;
+    scores: Array<APIMatchScore>;
+}
+
+export interface APIMatch {
+    match: APIMatchData;
+    games: Array<APIMatchGameData>;
+}
+
+export interface APIReplay {
+    content: string;
 }
