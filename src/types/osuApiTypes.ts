@@ -139,4 +139,5 @@ export interface APIMatch {
 
 export interface APIReplay {
     content: string;
+    encoding: 'base64';
 }

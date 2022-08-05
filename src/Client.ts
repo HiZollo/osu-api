@@ -3,17 +3,20 @@ import * as request from 'superagent';
 import { UserManager } from './managers/UserManager'
 import { BeatmapManager } from './managers/BeatmapManager';
 import { ScoreManager } from './managers/ScoreManager';
+import { ReplayManager } from './managers/ReplayManager';
 
 export class Client {
     private apiKey: string;
     public users: UserManager;
     public beatmaps: BeatmapManager;
     public scores: ScoreManager;
+    public replays: ReplayManager;
     constructor(options: ClientOptions) {
         this.apiKey = options.apiKey;
         this.users = new UserManager(this);
         this.beatmaps = new BeatmapManager(this);
         this.scores = new ScoreManager(this);
+        this.replays = new ReplayManager(this);
     }
 
     public async request<T extends OsuApiRequestOptions>(options: RequestOptions<T>) {

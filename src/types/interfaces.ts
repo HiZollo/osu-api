@@ -130,3 +130,21 @@ export interface GetUserRecentRequestOptions {
     type?: UserRequestType;
     limit?: number;
 }
+
+export interface APIGetReplayRequestOptions extends OsuApiRequestOptions {
+    b?: string;
+    u?: string;
+    m?: GameMode;
+    s?: string;
+    type?: UserRequestType;
+    mods?: bigint;
+}
+
+export interface GetReplayRequestOptions {
+    beatmapId?: string;
+    user?: string;
+    mode?: GameMode;
+    scoreId?: string;
+    type?: UserRequestType;
+    mods?: ModsResolvable;
+}
