@@ -1,19 +1,37 @@
 import type { Client } from "../client/Client";
-import type { APIBeatmapScore } from "../types/osuApiTypes";
+import type { BeatmapScoreOtherInfo } from "../types/interfaces";
+import type { APIBeatmapScore, APIUserBestPerformanceScore } from "../types/osuApiTypes";
+import { CDN } from "../utils/cdn";
 import { BaseScore } from "./BaseScore";
 
 export class BeatmapScore extends BaseScore {
     public readonly scoreId: string;
     public readonly beatmapId: string
-    public readonly username: string;
+    public readonly username: string | null;
     public readonly pp: number;
     public readonly replayAvailable: boolean;
-    constructor(client: Client, data: APIBeatmapScore, mapId: string) {
-        super(client, data);
-        this.beatmapId = mapId;
+
+    constructor(client: Client, data: APIBeatmapScore, other: BeatmapScoreOtherInfo);
+    constructor(client: Client, data: APIUserBestPerformanceScore, other: BeatmapScoreOtherInfo);
+
+    constructor(client: Client, data: APIBeatmapScore | APIUserBestPerformanceScore, other: BeatmapScoreOtherInfo) {
+        super(client, data, other.mode);
+        if ('beatmap_id' in data) {
+            this.beatmapId = data.beatmap_id;
+        } else {
+            this.beatmapId = other.mapId!;
+        }
+        
         this.scoreId = data.score_id;
-        this.username = data.username;
+
+        if ('username' in data) this.username = data.username;
+        else this.username = null;
+
         this.pp = +data.pp;
         this.replayAvailable = !!+data.replay_available;
+    }
+
+    scoreURL() {
+        return CDN.scoreURL(this.mode, this.scoreId);
     }
 }

@@ -1,9 +1,10 @@
 import { User } from "../structures/User";
-import type { APIGetUserRequestOptions, FetchUserBannerOptions, GetUserRequestOptions } from "../types/interfaces";
-import type { APIUser } from "../types/osuApiTypes";
+import type { APIGetUserBestRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRequestOptions } from "../types/interfaces";
+import type { APIUser, APIUserBestPerformanceScore } from "../types/osuApiTypes";
 import type { Client } from "./Client";
 import * as request from 'superagent';
 import { CDN } from "../utils/cdn";
+import { BeatmapScore } from "../structures/BeatmapScore";
 
 export class UserManager {
     public readonly client: Client;
@@ -41,4 +42,21 @@ export class UserManager {
         const url = CDN.defaultBanner(defaultBanner?.groups?.id!, defaultBanner?.groups?.ext!);
         return url;
     }
+
+    public async getUserBest(options: GetUserBestRequstOptions) {
+        const queries = {
+            u: options.user,
+            m: options.mode,
+            type: options.type,
+            limit: options.limit
+        }
+
+        const res = await this.client.request<APIGetUserBestRequestOptions>({
+            path: 'get_user_best',
+            queries
+        }) as Array<APIUserBestPerformanceScore>;
+
+        return res.map(v => new BeatmapScore(this.client, v, { mode: options.mode }));
+    }
+
 }

@@ -38,6 +38,11 @@ export interface RequestOptions<T extends OsuApiRequestOptions> {
     queries: T;
 }
 
+export interface BeatmapScoreOtherInfo {
+    mapId?: string,
+    mode?: GameMode
+}
+
 export interface OsuApiRequestOptions {}
 
 export interface APIGetUserRequestOptions extends OsuApiRequestOptions {
@@ -94,6 +99,20 @@ export interface GetScoreRequestOptions {
     user?: string;
     mode?: GameMode;
     mods?: ModsResolvable;
+    type?: UserRequestType;
+    limit?: number;
+}
+
+export interface APIGetUserBestRequestOptions extends OsuApiRequestOptions {
+    u: string;
+    m?: GameMode;
+    type?: UserRequestType;
+    limit?: number;
+}
+
+export interface GetUserBestRequstOptions {
+    user: string;
+    mode?: GameMode;
     type?: UserRequestType;
     limit?: number;
 }

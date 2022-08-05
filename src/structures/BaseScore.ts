@@ -1,6 +1,6 @@
 import type { Client } from "../client/Client";
 import type { APIBasicScore } from "../types/osuApiTypes";
-import { ScoreRank } from "../enums";
+import { GameMode, ScoreRank } from "../enums";
 import { ModsBitField } from "./ModsBitField";
 
 export abstract class BaseScore {
@@ -18,7 +18,8 @@ export abstract class BaseScore {
     public readonly userId: string;
     public readonly date: Date;
     public readonly rank: ScoreRank;
-    constructor(client: Client, data: APIBasicScore) {
+    public readonly mode: GameMode;
+    constructor(client: Client, data: APIBasicScore, gameMode: GameMode = GameMode.Standard) {
         this.client = client;
         this.score = +data.score;
         this.maxCombo = +data.maxcombo;
@@ -33,5 +34,6 @@ export abstract class BaseScore {
         this.userId = data.user_id;
         this.date = new Date(data.date);
         this.rank = ScoreRank[data.rank];
+        this.mode = gameMode;
     }
 }

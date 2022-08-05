@@ -1,8 +1,8 @@
 import type { APIGetScoresRequestOptions, GetScoreRequestOptions } from "../types/interfaces";
 import type { Client } from "./Client";
+import type { APIBeatmapScore } from "../types/osuApiTypes";
 import { ModsBitField } from "../structures/ModsBitField";
 import { BeatmapScore } from "../structures/BeatmapScore";
-import { APIBeatmapScore } from "../types/osuApiTypes";
 
 export class ScoreManager {
     public readonly client: Client;
@@ -27,6 +27,6 @@ export class ScoreManager {
             queries
         }) as Array<APIBeatmapScore>;
 
-        return res.map(v => new BeatmapScore(this.client, v, options.beatmapId));
+        return res.map(v => new BeatmapScore(this.client, v, { mapId: options.beatmapId, mode: options.mode }));
     }
 }

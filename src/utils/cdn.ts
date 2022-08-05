@@ -40,4 +40,16 @@ export abstract class CDN {
     public static beatmapCoverThumbnail(beatmapsetId: string) {
         return `https://b.ppy.sh/thumb/${beatmapsetId}l.jpg`;
     }
+
+    public static scoreURL(mode: GameMode, scoreId: string) {
+        let m: string;
+        switch(mode) {
+            case GameMode.Standard: m = 'osu'; break;
+            case GameMode.Taiko: m = 'taiko'; break;
+            case GameMode.Catch: m = 'fruits'; break;
+            case GameMode.Mania: m = 'mania'; break;
+            default: throw new Error('INVALID_GAMEMODE');
+        }
+        return `https://osu.ppy.sh/scores/${m}/${scoreId}`;
+    }
 }
