@@ -62,3 +62,7 @@ export enum BeatmapLanguage {
     Instrumental, Korean, French, German, Swedish,
     Spanish, Italian, Russian, Polish, Other
 }
+
+export enum ScoreRank {
+    XH, X, SH, S, A, B, C, D
+}

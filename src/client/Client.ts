@@ -2,15 +2,18 @@ import type { ClientOptions, OsuApiRequestOptions, RequestOptions } from '../typ
 import * as request from 'superagent';
 import { UserManager } from './UserManager'
 import { BeatmapManager } from './BeatmapManager';
+import { ScoreManager } from './ScoreManager';
 
 export class Client {
     private apiKey: string;
     public users: UserManager;
     public beatmaps: BeatmapManager;
+    public scores: ScoreManager;
     constructor(options: ClientOptions) {
         this.apiKey = options.apiKey;
         this.users = new UserManager(this);
         this.beatmaps = new BeatmapManager(this);
+        this.scores = new ScoreManager(this);
     }
 
     public async request<T extends OsuApiRequestOptions>(options: RequestOptions<T>) {

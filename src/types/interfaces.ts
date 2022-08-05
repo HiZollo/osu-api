@@ -79,3 +79,21 @@ export interface GetBeatmapsRequestOptions {
     limit?: number;
     mods?: ModsResolvable;
 }
+
+export interface APIGetScoresRequestOptions extends OsuApiRequestOptions{
+    b: string;
+    u?: string;
+    m?: GameMode;
+    mods?: bigint;
+    type?: UserRequestType;
+    limit?: number;
+}
+
+export interface GetScoreRequestOptions {
+    beatmapId: string;
+    user?: string;
+    mode?: GameMode;
+    mods?: ModsResolvable;
+    type?: UserRequestType;
+    limit?: number;
+}

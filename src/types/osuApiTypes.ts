@@ -1,3 +1,5 @@
+import type { ScoreRank } from "../enums";
+
 export interface APIUser {
     user_id: string;
     username: string;
@@ -84,7 +86,7 @@ export interface APIBasicScore {
     enabled_mod: string;
     user_id: string;
     date: string;
-    rank: string;
+    rank: keyof typeof ScoreRank;
 }
 
 export interface APIUserRecentPlayedScore extends APIBasicScore {
