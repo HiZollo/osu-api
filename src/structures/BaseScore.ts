@@ -29,7 +29,7 @@ export abstract class BaseScore {
         this.countKatu = +data.countkatu;
         this.countGeki = +data.countgeki;
         this.perfect = !!+data.perfect;
-        this.enabledMod = new ModsBitField(data.enabled_mod);
+        this.enabledMod = new ModsBitField(data.enabled_mods);
         this.userId = data.user_id;
         this.date = new Date(data.date);
         this.rank = ScoreRank[data.rank];

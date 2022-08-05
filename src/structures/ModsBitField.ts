@@ -81,6 +81,7 @@ export class ModsBitField {
         }
         if (typeof bit === 'number') return BigInt(bit);
         if (typeof bit === 'string') {
+            if (!isNaN(+bit)) return BigInt(bit);
             const a: bigint | undefined = ModsBitField.Flags[bit as keyof typeof ModsBitField.Flags];
             if (typeof a === 'undefined') throw new Error('INVALID_BITFIELD');
             return a;
