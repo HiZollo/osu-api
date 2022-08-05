@@ -1,5 +1,5 @@
 import { User } from "../structures/User";
-import type { FetchUserBannerOptions, GetUserRequestOptions } from "../types/interfaces";
+import type { APIGetUserRequestOptions, FetchUserBannerOptions, GetUserRequestOptions } from "../types/interfaces";
 import type { APIUser } from "../types/osuApiTypes";
 import type { Client } from "./Client";
 import * as request from 'superagent';
@@ -19,7 +19,7 @@ export class UserManager {
             event_days: options.eventDays
         }
 
-        const res = await this.client.request({
+        const res = await this.client.request<APIGetUserRequestOptions>({
             path: 'get_user',
             queries
         }) as Array<APIUser>;
