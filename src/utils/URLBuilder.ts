@@ -1,6 +1,6 @@
 import { GameMode } from "../enums";
 
-export abstract class CDN {
+export abstract class URLBuilder {
     public static avatar(id: string) {
         return `https://a.ppy.sh/${id}`;
     }

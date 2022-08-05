@@ -3,7 +3,7 @@ import type { APIGetUserBestRequestOptions, APIGetUserRequestOptions, FetchUserB
 import type { APIUser, APIUserBestPerformanceScore } from "../types/osuApiTypes";
 import type { Client } from "./Client";
 import * as request from 'superagent';
-import { CDN } from "../utils/cdn";
+import { URLBuilder } from "../utils/URLBuilder";
 import { BeatmapScore } from "../structures/BeatmapScore";
 
 export class UserManager {
@@ -34,12 +34,12 @@ export class UserManager {
         const banner = banner_regex.exec(context.text);
 
         if (banner) {
-            const url = CDN.banner(id, banner?.groups?.hash!, banner?.groups?.ext!);
+            const url = URLBuilder.banner(id, banner?.groups?.hash!, banner?.groups?.ext!);
             return url;
         }
         const default_banner_regex = new RegExp('https:\\\\\\/\\\\\\/osu\\.ppy\\.sh\\\\\\/images\\\\\\/headers\\\\\\/profile-covers\\\\\\/c(?<id>\\d)\\.(?<ext>.*?)&', 'gm');
         const defaultBanner = default_banner_regex.exec(context.text);
-        const url = CDN.defaultBanner(defaultBanner?.groups?.id!, defaultBanner?.groups?.ext!);
+        const url = URLBuilder.defaultBanner(defaultBanner?.groups?.id!, defaultBanner?.groups?.ext!);
         return url;
     }
 

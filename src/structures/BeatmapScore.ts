@@ -1,7 +1,7 @@
 import type { Client } from "../client/Client";
 import type { BeatmapScoreOtherInfo } from "../types/interfaces";
 import type { APIBeatmapScore, APIUserBestPerformanceScore } from "../types/osuApiTypes";
-import { CDN } from "../utils/cdn";
+import { URLBuilder } from "../utils/URLBuilder";
 import { BaseScore } from "./BaseScore";
 
 export class BeatmapScore extends BaseScore {
@@ -32,6 +32,6 @@ export class BeatmapScore extends BaseScore {
     }
 
     scoreURL() {
-        return CDN.scoreURL(this.mode, this.scoreId);
+        return URLBuilder.scoreURL(this.mode, this.scoreId);
     }
 }

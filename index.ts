@@ -11,7 +11,7 @@ export * from './src/structures/Beatmapset';
 export * from './src/structures/BaseScore';
 export * from './src/structures/BeatmapScore';
 
-export * from './src/utils/cdn';
+export * from './src/utils/URLBuilder';
 
 export * from './src/types/interfaces';
 export * from './src/types/osuApiTypes';

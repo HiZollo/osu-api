@@ -2,7 +2,7 @@ import type { UserScoreRankCount } from "../types/interfaces";
 import type { APIUser } from "../types/osuApiTypes";
 import type { Client } from "../client/Client";
 import { UserEvent } from "./UserEvent";
-import { CDN } from "../utils/cdn";
+import { URLBuilder } from "../utils/URLBuilder";
 
 export class User {
     public readonly client: Client;
@@ -61,11 +61,11 @@ export class User {
     }
 
     public avatarURL() {
-        return CDN.avatar(this.id);
+        return URLBuilder.avatar(this.id);
     }
 
     public profileURL() {
-        return CDN.profile(this.id);
+        return URLBuilder.profile(this.id);
     }
 
     public async fetchBanner(force: boolean = false) {

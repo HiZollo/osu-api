@@ -3,7 +3,7 @@ import type { BeatmapDiffculty, BeatmapObjectCount } from "../types/interfaces";
 import type { APIBeatmap } from "../types/osuApiTypes";
 import type { User } from "./User";
 import { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage, GameMode, UserRequestType } from "../enums";
-import { CDN } from "../utils/cdn";
+import { URLBuilder } from "../utils/URLBuilder";
 import { Beatmapset } from "./Beatmapset";
 
 export class Beatmap {
@@ -89,19 +89,19 @@ export class Beatmap {
     }
 
     public beatmapsetURL() {
-        return CDN.beatmapsetURL(this.beatmapsetId);
+        return URLBuilder.beatmapsetURL(this.beatmapsetId);
     }
 
     public beatmapURL() {
-        return CDN.beatmapURL(this.beatmapsetId, this.id, this.mode);
+        return URLBuilder.beatmapURL(this.beatmapsetId, this.id, this.mode);
     }
     
     public coverImageURL() {
-        return CDN.beatmapCoverImage(this.beatmapsetId);
+        return URLBuilder.beatmapCoverImage(this.beatmapsetId);
     }
     
     public coverThumbnailURL() {
-        return CDN.beatmapCoverThumbnail(this.beatmapsetId);
+        return URLBuilder.beatmapCoverThumbnail(this.beatmapsetId);
     }
     
     public async getCreator(): Promise<User | undefined> {

@@ -3,7 +3,7 @@ import type { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage } from '../enu
 import type { Beatmap } from './Beatmap';
 import type { User } from './User';
 import { UserRequestType } from '../enums';
-import { CDN } from '../utils/cdn';
+import { URLBuilder } from '../utils/URLBuilder';
 
 export class Beatmapset {
     public readonly client: Client;
@@ -50,15 +50,15 @@ export class Beatmapset {
     }
 
     public beatmapsetURL() {
-        return CDN.beatmapsetURL(this.id);
+        return URLBuilder.beatmapsetURL(this.id);
     }
     
     public coverImageURL() {
-        return CDN.beatmapCoverImage(this.id);
+        return URLBuilder.beatmapCoverImage(this.id);
     }
     
     public coverThumbnailURL() {
-        return CDN.beatmapCoverThumbnail(this.id);
+        return URLBuilder.beatmapCoverThumbnail(this.id);
     }
     
     public async getCreator(): Promise<User | undefined> {
