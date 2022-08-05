@@ -1,17 +1,12 @@
 import type { APIGetUserBestRequestOptions, APIGetUserRecentRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRecentRequestOptions, GetUserRequestOptions } from "../types/interfaces";
 import type { APIUser, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
-import type { Client } from "../Client";
 import * as request from 'superagent';
 import { URLBuilder } from "../utils/URLBuilder";
 import { BeatmapScore } from "../structures/BeatmapScore";
 import { User } from "../structures/User";
+import { BaseManager } from "./BaseManager";
 
-export class UserManager {
-    public readonly client: Client;
-    constructor(client: Client) {
-        this.client = client;
-    }
-
+export class UserManager extends BaseManager {
     public async getUser(options: GetUserRequestOptions) {
         const queries = {
             u: options.user,

@@ -1,15 +1,10 @@
-import type { Client } from "../Client";
 import type { APIGetReplayRequestOptions, GetReplayRequestOptions } from "../types/interfaces";
 import type { APIReplay } from "../types/osuApiTypes";
 import { ModsBitField } from "../structures/ModsBitField";
 import { Replay } from "../structures/Replay";
+import { BaseManager } from "./BaseManager";
 
-export class ReplayManager {
-    public readonly client: Client;
-    constructor(client: Client) {
-        this.client = client;
-    }
-
+export class ReplayManager extends BaseManager {
     public async getReplay(options: GetReplayRequestOptions) {
         if ((!options.beatmapId || !options.user) && !options.scoreId) {
             throw new Error('You should provide either beatmapId and user or scordId to get replay')

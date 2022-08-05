@@ -1,16 +1,11 @@
 import type { APIGetBeatmapsRequestOptions, GetBeatmapsRequestOptions } from "../types/interfaces";
-import type { Client } from "../Client";
 import type { APIBeatmap } from "../types/osuApiTypes";
 import { toSqlDate } from '../utils/toSqlDate';
 import { ModsBitField } from "../structures/ModsBitField";
 import { Beatmap } from "../structures/Beatmap";
+import { BaseManager } from "./BaseManager";
 
-export class BeatmapManager {
-    public readonly client: Client;
-    constructor(client: Client) {
-        this.client = client;
-    }
-
+export class BeatmapManager extends BaseManager {
     public async getBeatmaps(options: GetBeatmapsRequestOptions = {}) {
         const queries = {
             since: options.since && toSqlDate(options.since),

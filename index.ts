@@ -1,4 +1,6 @@
 export * from './src/Client';
+
+export * from './src/managers/BaseManager';
 export * from './src/managers/UserManager';
 export * from './src/managers/BeatmapManager';
 export * from './src/managers/ScoreManager';
