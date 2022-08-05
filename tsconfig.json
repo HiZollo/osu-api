@@ -15,5 +15,6 @@
       "noUnusedParameters": true,
       "noImplicitReturns": true,
       "skipLibCheck": true
-    }
+    },
+    "includes": ["index.ts", "src/**/*"]
 }
