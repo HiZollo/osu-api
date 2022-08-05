@@ -1,8 +1,8 @@
 import type { Client } from '../Client';
-import type { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage } from '../enums';
+import type { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage } from '../types/enums';
 import type { Beatmap } from './Beatmap';
 import type { User } from './User';
-import { UserRequestType } from '../enums';
+import { UserRequestType } from '../types/enums';
 import { URLBuilder } from '../utils/URLBuilder';
 
 export class Beatmapset {

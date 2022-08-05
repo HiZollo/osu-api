@@ -1,6 +1,6 @@
 import type { Client } from "../Client";
 import type { APIBasicScore } from "../types/osuApiTypes";
-import { GameMode, ScoreRank } from "../enums";
+import { GameMode, ScoreRank } from "../types/enums";
 import { ModsBitField } from "./ModsBitField";
 
 export abstract class BaseScore {

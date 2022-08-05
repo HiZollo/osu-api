@@ -1,4 +1,4 @@
-import { Mods } from "../enums";
+import { Mods } from "../types/enums";
 
 export type ModsResolvable = number | string | bigint | ModsBitField | Array<ModsResolvable>;
 

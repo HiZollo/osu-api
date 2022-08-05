@@ -1,4 +1,4 @@
-import { GameMode } from "../enums";
+import { GameMode } from "../types/enums";
 
 export abstract class URLBuilder {
     private static gameModeToURLPattern(mode: GameMode) {

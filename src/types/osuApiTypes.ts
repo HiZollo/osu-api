@@ -1,4 +1,4 @@
-import type { ScoreRank } from "../enums";
+import type { ScoreRank } from "./enums";
 
 export interface APIUser {
     user_id: string;

@@ -1,5 +1,5 @@
 import type { ModsResolvable } from "../structures/ModsBitField";
-import type { GameMode, UserRequestType } from "../enums";
+import type { GameMode, UserRequestType } from "./enums";
 
 export interface ClientOptions {
     apiKey: string;

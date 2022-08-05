@@ -2,7 +2,7 @@ import type { Client } from "../Client";
 import type { BeatmapDiffculty, BeatmapObjectCount } from "../types/interfaces";
 import type { APIBeatmap } from "../types/osuApiTypes";
 import type { User } from "./User";
-import { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage, GameMode, UserRequestType } from "../enums";
+import { BeatmapApprovedState, BeatmapGenre, BeatmapLanguage, GameMode, UserRequestType } from "../types/enums";
 import { URLBuilder } from "../utils/URLBuilder";
 import { Beatmapset } from "./Beatmapset";
 
