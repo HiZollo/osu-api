@@ -1,6 +1,16 @@
 import { GameMode } from "../enums";
 
 export abstract class URLBuilder {
+    private static gameModeToURLPattern(mode: GameMode) {
+        switch(mode) {
+            case GameMode.Standard: return 'osu';
+            case GameMode.Taiko: return 'taiko';
+            case GameMode.Catch: return 'fruits';
+            case GameMode.Mania: return 'mania';
+            default: throw new Error('INVALID_GAMEMODE');
+        }
+    }
+
     public static avatar(id: string) {
         return `https://a.ppy.sh/${id}`;
     }
@@ -22,14 +32,7 @@ export abstract class URLBuilder {
     }
 
     public static beatmapURL(beatmapsetId: string, beatmapId: string, mode: GameMode) {
-        let m: string;
-        switch(mode) {
-            case GameMode.Standard: m = 'osu'; break;
-            case GameMode.Taiko: m = 'taiko'; break;
-            case GameMode.Catch: m = 'fruits'; break;
-            case GameMode.Mania: m = 'mania'; break;
-            default: throw new Error('INVALID_GAMEMODE');
-        }
+        const m = URLBuilder.gameModeToURLPattern(mode);
         return `https://osu.ppy.sh/beatmapsets/${beatmapsetId}#${m}/${beatmapId}`;
     }
 
@@ -42,14 +45,7 @@ export abstract class URLBuilder {
     }
 
     public static scoreURL(mode: GameMode, scoreId: string) {
-        let m: string;
-        switch(mode) {
-            case GameMode.Standard: m = 'osu'; break;
-            case GameMode.Taiko: m = 'taiko'; break;
-            case GameMode.Catch: m = 'fruits'; break;
-            case GameMode.Mania: m = 'mania'; break;
-            default: throw new Error('INVALID_GAMEMODE');
-        }
+        const m = URLBuilder.gameModeToURLPattern(mode);
         return `https://osu.ppy.sh/scores/${m}/${scoreId}`;
     }
 }
