@@ -85,11 +85,11 @@ export interface APIBasicScore {
     perfect: '0' | '1';
     enabled_mods: string;
     user_id: string;
-    date: string;
     rank: keyof typeof ScoreRank;
 }
 
 export interface APIUserRecentPlayedScore extends APIBasicScore {
+    date: string;
     beatmap_id: string;
 }
 
@@ -100,14 +100,15 @@ export interface APIUserBestPerformanceScore extends APIUserRecentPlayedScore {
 }
 
 export interface APIBeatmapScore extends APIBasicScore {
+    date: string;
     score_id: string;
     username: string;
     pp: string;
     replay_available: '0' | '1';
 }
 
-export interface APIMatchScore extends Omit<APIBasicScore, "date"> {
-    solt: string;
+export interface APIMatchScore extends APIBasicScore {
+    slot: string;
     team: '0' | '1' | '2';
     pass: '0' | '1';
 }
@@ -135,6 +136,11 @@ export interface APIMatchGameData {
 export interface APIMatch {
     match: APIMatchData;
     games: Array<APIMatchGameData>;
+}
+
+export interface APIMatchNotFound {
+    match: 0;
+    games: [];
 }
 
 export interface APIReplay {

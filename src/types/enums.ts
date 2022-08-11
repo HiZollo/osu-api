@@ -66,3 +66,15 @@ export enum BeatmapLanguage {
 export enum ScoreRank {
     XH, X, SH, S, A, B, C, D, F
 }
+
+export enum MatchScoringType {
+    Score, Accuracy, Combo, ScoreV2
+}
+
+export enum MatchTeamType {
+    HeadToHead, TagCoop, TeamVs, TagTeamVs
+}
+
+export enum Team {
+    None, Blue, Red
+}

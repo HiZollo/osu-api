@@ -5,6 +5,7 @@ import { URLBuilder } from "../utils/URLBuilder";
 import { BaseScore } from "./BaseScore";
 
 export class BeatmapScore extends BaseScore {
+    public readonly date: Date;
     public readonly beatmapId: string;
     public readonly scoreId: string | null = null;
     public readonly username: string | null = null;
@@ -21,6 +22,8 @@ export class BeatmapScore extends BaseScore {
         other: BeatmapScoreOtherInfo
     ) {
         super(client, data, other.mode);
+
+        this.date = new Date(data.date);
 
         if ('beatmap_id' in data) {
             this.beatmapId = data.beatmap_id;

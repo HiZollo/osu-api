@@ -16,7 +16,6 @@ export abstract class BaseScore {
     public readonly perfect: boolean;
     public readonly enabledMods: ModsBitField;
     public readonly userId: string;
-    public readonly date: Date;
     public readonly rank: ScoreRank;
     public readonly mode: GameMode;
     constructor(client: Client, data: APIBasicScore, gameMode: GameMode = GameMode.Standard) {
@@ -32,7 +31,6 @@ export abstract class BaseScore {
         this.perfect = !!+data.perfect;
         this.enabledMods = new ModsBitField(data.enabled_mods);
         this.userId = data.user_id;
-        this.date = new Date(data.date);
         this.rank = ScoreRank[data.rank];
         this.mode = gameMode;
     }
