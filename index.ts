@@ -17,6 +17,7 @@ export * from './src/structures/BeatmapScore';
 export * from './src/structures/MatchScore';
 export * from './src/structures/Replay';
 export * from './src/structures/Match';
+export * from './src/structures/MatchGame';
 
 export * from './src/utils/URLBuilder';
 
