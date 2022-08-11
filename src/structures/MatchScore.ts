@@ -8,12 +8,10 @@ export class MatchScore extends BaseScore {
     public readonly slot: number;
     public readonly team: Team;
     public readonly pass: boolean;
-    public readonly beatmapId: string;
     constructor(client: Client, data: APIMatchScore, other: BeatmapScoreOtherInfo) {
-        super(client, data, other.mode);
+        super(client, data, other);
         this.slot = +data.slot;
         this.team = +data.team;
         this.pass = !!+data.pass;
-        this.beatmapId = other.mapId!;
     }
 }

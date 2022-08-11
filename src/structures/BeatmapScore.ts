@@ -6,7 +6,6 @@ import { BaseScore } from "./BaseScore";
 
 export class BeatmapScore extends BaseScore {
     public readonly date: Date;
-    public readonly beatmapId: string;
     public readonly scoreId: string | null = null;
     public readonly username: string | null = null;
     public readonly pp: number | null = null;
@@ -21,15 +20,9 @@ export class BeatmapScore extends BaseScore {
         data: APIBeatmapScore | APIUserBestPerformanceScore | APIUserRecentPlayedScore, 
         other: BeatmapScoreOtherInfo
     ) {
-        super(client, data, other.mode);
+        super(client, data, other);
 
         this.date = new Date(data.date);
-
-        if ('beatmap_id' in data) {
-            this.beatmapId = data.beatmap_id;
-        } else {
-            this.beatmapId = other.mapId!;
-        }
         
         if ('score_id' in data) {
             this.scoreId = data.score_id;
@@ -48,8 +41,18 @@ export class BeatmapScore extends BaseScore {
         }
     }
 
-    scoreURL() {
+    public scoreURL() {
         if (!this.scoreId) return null;
         return URLBuilder.scoreURL(this.mode, this.scoreId);
     }
+
+    public async getBeatmap() {
+        const candidates = await this.client.beatmaps.getBeatmaps({
+            beatmapId: this.beatmapId,
+            mode: this.mode,
+        });
+
+        return candidates[0];
+    }
+
 }
