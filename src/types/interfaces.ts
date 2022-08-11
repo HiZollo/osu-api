@@ -1,6 +1,5 @@
-import { MatchScore } from "../structures/MatchScore";
-import type { ModsBitField, ModsResolvable } from "../structures/ModsBitField";
-import type { GameMode, MatchScoringType, MatchTeamType, UserRequestType } from "./enums";
+import type { ModsResolvable } from "../structures/ModsBitField";
+import type { GameMode, UserRequestType } from "./enums";
 
 export interface ClientOptions {
     apiKey: string;
@@ -51,19 +50,6 @@ export interface RequestOptions<T extends OsuApiRequestOptions> {
 export interface BeatmapScoreOtherInfo {
     mapId?: string;
     mode?: GameMode;
-}
-
-export interface MatchGameData {
-    id: string;
-    startAt: Date;
-    endAt: Date;
-    beatmapId: string;
-    mode: GameMode;
-    matchType: number;
-    scoringType: MatchScoringType,
-    teamType: MatchTeamType,
-    mods: ModsBitField,
-    scores: Array<MatchScore>
 }
 
 export interface OsuApiRequestOptions {}
