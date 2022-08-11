@@ -22,7 +22,7 @@ export class Match {
             this.endAt = null;
         }
 
-        this.games = games.map(data => new MatchGame(this.client, data));
+        this.games = games.map(data => new MatchGame(this, data));
 
     }
 }
