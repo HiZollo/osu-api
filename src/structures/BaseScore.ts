@@ -1,6 +1,6 @@
 import type { Client } from "../Client";
 import type { APIBasicScore, APIBeatmapScore, APIMatchScore, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
-import type { BeatmapScoreOtherInfo, GetUserRequestOptions } from "../types/interfaces";
+import type { BeatmapScoreOtherInfo, GetUserRequestOptions, ScoreStatistics } from "../types/interfaces";
 import type { User } from "./User";
 import { GameMode, ScoreRank, UserRequestType } from "../types/enums";
 import { ModsBitField } from "./ModsBitField";
@@ -16,12 +16,7 @@ export abstract class BaseScore {
     public readonly client: Client;
     public readonly score: number;
     public readonly maxCombo: number;
-    public readonly count50: number;
-    public readonly count100: number;
-    public readonly count300: number;
-    public readonly countMiss: number;
-    public readonly countKatu: number;
-    public readonly countGeki: number;
+    public readonly statistics: ScoreStatistics;
     public readonly perfect: boolean;
     public readonly enabledMods: ModsBitField;
     public readonly userId: string;
@@ -32,12 +27,14 @@ export abstract class BaseScore {
         this.client = client;
         this.score = +data.score;
         this.maxCombo = +data.maxcombo;
-        this.count50 = +data.count50;
-        this.count100 = +data.count100;
-        this.count300 = +data.count300;
-        this.countMiss = +data.countmiss;
-        this.countKatu = +data.countkatu;
-        this.countGeki = +data.countgeki;
+        this.statistics = {
+            count50: +data.count50,
+            count100: +data.count100,
+            count300: +data.count300,
+            countMiss: +data.countmiss,
+            countKatu: +data.countkatu,
+            countGeki: +data.countgeki
+        }
         this.perfect = !!+data.perfect;
         this.enabledMods = new ModsBitField(data.enabled_mods);
         this.userId = data.user_id;

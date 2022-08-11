@@ -34,6 +34,15 @@ export interface BeatmapObjectCount {
     spinner: number;
 }
 
+export interface ScoreStatistics {
+    count50: number;
+    count100: number;
+    count300: number;
+    countMiss: number;
+    countKatu: number;
+    countGeki: number;
+}
+
 export interface RequestOptions<T extends OsuApiRequestOptions> {
     path: string;
     queries: T;
