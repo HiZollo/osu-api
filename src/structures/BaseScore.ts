@@ -58,6 +58,15 @@ export abstract class BaseScore {
         return candidates[0];
     }
 
+    public async getBeatmap() {
+        const candidates = await this.client.beatmaps.getBeatmaps({
+            beatmapId: this.beatmapId,
+            mode: this.mode,
+        });
+
+        return candidates[0];
+    }
+
     public getReplay() {
         return this.client.replays.getReplay({
             beatmapId: this.beatmapId,

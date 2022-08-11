@@ -46,13 +46,4 @@ export class BeatmapScore extends BaseScore {
         return URLBuilder.scoreURL(this.mode, this.scoreId);
     }
 
-    public async getBeatmap() {
-        const candidates = await this.client.beatmaps.getBeatmaps({
-            beatmapId: this.beatmapId,
-            mode: this.mode,
-        });
-
-        return candidates[0];
-    }
-
 }

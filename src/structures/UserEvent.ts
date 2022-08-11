@@ -1,5 +1,6 @@
 import type { User } from './User';
 import type { APIUserEvent } from "../types/osuApiTypes";
+import type { Beatmap } from './Beatmap';
 
 export class UserEvent {
     public readonly user: User;
@@ -15,5 +16,19 @@ export class UserEvent {
         this.beatmapsetId = data.beatmapset_id;
         this.date = new Date(data.date);
         this.epicfactor = +data.epicfactor;
+    }
+
+    public async getBeatmap(): Promise<Beatmap | undefined> {
+        const candidates = await this.user.client.beatmaps.getBeatmaps({
+            beatmapId: this.beatmapId,
+            beatmapsetId: this.beatmapsetId,
+        });
+
+        return candidates[0];
+    }
+
+    public async getBeatmapset() {
+        const beatmap = await this.getBeatmap();
+        return beatmap?.getBeatmapset();
     }
 }
