@@ -1,4 +1,4 @@
-import type { APIGetUserBestRequestOptions, APIGetUserRecentRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRecentRequestOptions, GetUserRequestOptions } from "../types/interfaces";
+import type { APIGetUserBestRequestOptions, APIGetUserRecentRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequestOptions, GetUserRecentRequestOptions, GetUserRequestOptions } from "../types/interfaces";
 import type { APIUser, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
 import request from 'superagent';
 import { URLBuilder } from "../utils/URLBuilder";
@@ -38,7 +38,7 @@ export class UserManager extends BaseManager {
         return url;
     }
 
-    public async getUserBest(options: GetUserBestRequstOptions) {
+    public async getUserBest(options: GetUserBestRequestOptions) {
         const queries = {
             u: options.user,
             m: options.mode,
