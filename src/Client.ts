@@ -1,5 +1,5 @@
 import type { ClientOptions, OsuApiRequestOptions, RequestOptions } from './types/interfaces';
-import * as request from 'superagent';
+import request from 'superagent';
 import { UserManager } from './managers/UserManager'
 import { BeatmapManager } from './managers/BeatmapManager';
 import { ScoreManager } from './managers/ScoreManager';

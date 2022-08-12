@@ -1,6 +1,6 @@
 import type { APIGetUserBestRequestOptions, APIGetUserRecentRequestOptions, APIGetUserRequestOptions, FetchUserBannerOptions, GetUserBestRequstOptions, GetUserRecentRequestOptions, GetUserRequestOptions } from "../types/interfaces";
 import type { APIUser, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
-import * as request from 'superagent';
+import request from 'superagent';
 import { URLBuilder } from "../utils/URLBuilder";
 import { BeatmapScore } from "../structures/BeatmapScore";
 import { User } from "../structures/User";
