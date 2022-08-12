@@ -1,8 +1,9 @@
-import type { UserScoreRankCount } from "../types/interfaces";
+import type { UserScoreRankCount, GetUserBestRequestOptions, GetUserRecentRequestOptions } from "../types/interfaces";
 import type { APIUser } from "../types/osuApiTypes";
 import type { Client } from "../Client";
 import { UserEvent } from "./UserEvent";
 import { URLBuilder } from "../utils/URLBuilder";
+import { UserRequestType } from "../types/enums";
 
 export class User {
     public readonly client: Client;
@@ -72,5 +73,22 @@ export class User {
         if (!force && this.banner) return this.banner;
         const url = await this.client.users.fetchBanner({ id: this.id });
         return this.banner = url;
+    }
+
+    public getBest(options: Omit<GetUserBestRequestOptions, "user" | "type"> = {}) {
+        return this.client.users.getUserBest({
+            user: this.id,
+            type: UserRequestType.Id,
+            ...options
+        });
+
+    }
+
+    public getRecent(options: Omit<GetUserRecentRequestOptions, "user" | "type"> = {}) {
+        return this.client.users.getUserRecent({
+            user: this.id,
+            type: UserRequestType.Id,
+            ...options
+        });
     }
 }
