@@ -4,6 +4,7 @@ import type { BeatmapScoreOtherInfo, GetUserRequestOptions, ScoreStatistics } fr
 import type { User } from "./User";
 import { GameMode, ScoreRank, UserRequestType } from "../types/enums";
 import { ModsBitField } from "./ModsBitField";
+import { AccuracyCalculator } from "../utils/AccuracyCalculator";
 
 export type APIScore = 
     APIBasicScore |
@@ -23,6 +24,7 @@ export abstract class BaseScore {
     public readonly rank: ScoreRank;
     public readonly mode: GameMode;
     public readonly beatmapId: string;
+    public readonly accuracy: number;
     constructor(client: Client, data: APIScore, other: BeatmapScoreOtherInfo) {
         this.client = client;
         this.score = +data.score;
@@ -46,6 +48,8 @@ export abstract class BaseScore {
         } else {
             this.beatmapId = other.mapId!;
         }
+
+        this.accuracy = AccuracyCalculator.calculate(this);
     }
 
     public async getPlayer(options: Omit<GetUserRequestOptions, "user" | "type"> = {}): Promise<User | undefined> {

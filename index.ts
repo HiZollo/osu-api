@@ -20,6 +20,7 @@ export * from './src/structures/Match';
 export * from './src/structures/MatchGame';
 
 export * from './src/utils/URLBuilder';
+export * from './src/utils/AccuracyCalculator'
 
 export * from './src/types/interfaces';
 export * from './src/types/osuApiTypes';
