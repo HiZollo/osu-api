@@ -42,6 +42,40 @@ export const Mods = {
     Mirror         :1n << 30n,
 }
 
+export const ModsAbbreviation = {
+    NoFail: 'NF',
+    Easy: 'EZ',
+    TouchDevice: 'TD',
+    Hidden: 'HD', 
+    HardRock: 'HR',
+    SuddenDeath: 'SD',
+    DoubleTime: 'DT',
+    Relax: 'RX',
+    HalfTime: 'HT',
+    Nightcore: 'NC',
+    Flashlight: 'FL',
+    Autoplay: 'AT', 
+    SpunOut: 'SO',
+    AutoPilot: 'AP', 
+    Perfect: 'PF', 
+    Key4: '4K', 
+    Key5: '5K',
+    Key6: '6K',
+    Key7: '7K', 
+    Key8: '8K',
+    FadeIn: 'FI',
+    Random: 'RD', 
+    Cinema: 'CM',
+    Target: 'TP',
+    Key9: '9K',
+    KeyCoop: 'CP',
+    Key1: '1K', 
+    Key3: '3K', 
+    Key2: '2K', 
+    ScoreV2: 'SV2',
+    Mirror: 'MR'
+  }
+
 export enum BeatmapApprovedState {
     Graveyard = -2,
     WIP,
