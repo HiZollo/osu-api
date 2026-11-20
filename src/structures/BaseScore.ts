@@ -57,6 +57,7 @@ export abstract class BaseScore {
         const candidates = await this.client.users.getUser({
             user: this.userId,
             type: UserRequestType.Id,
+            gameMode: this.mode,
             ...options
         });
 
