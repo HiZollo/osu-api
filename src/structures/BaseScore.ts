@@ -75,6 +75,7 @@ export abstract class BaseScore {
     public getReplay() {
         return this.client.replays.getReplay({
             beatmapId: this.beatmapId,
+            mode: this.mode,
             user: this.userId,
             type: UserRequestType.Id
         })
