@@ -3,6 +3,7 @@ import type { APIReplay } from "../types/osuApiTypes";
 import { ModsBitField } from "../structures/ModsBitField";
 import { Replay } from "../structures/Replay";
 import { BaseManager } from "./BaseManager";
+import { omitUndefined } from "../utils/omitUndefined";
 
 export class ReplayManager extends BaseManager {
     public async getReplay(options: GetReplayRequestOptions) {
@@ -11,14 +12,14 @@ export class ReplayManager extends BaseManager {
         }
         const mods = options.mods == undefined 
             ? undefined : ModsBitField.resolve(options.mods);
-        const queries = {
+        const queries = omitUndefined({
             b: options.beatmapId,
             u: options.user,
             m: options.mode,
             s: options.scoreId,
             type: options.type,
             mods: mods
-        }
+        })
 
         const res = await this.client.request<APIGetReplayRequestOptions>({
             path: 'get_replay',

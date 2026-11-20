@@ -5,15 +5,16 @@ import { URLBuilder } from "../utils/URLBuilder";
 import { BeatmapScore } from "../structures/BeatmapScore";
 import { User } from "../structures/User";
 import { BaseManager } from "./BaseManager";
+import { omitUndefined } from "../utils/omitUndefined";
 
 export class UserManager extends BaseManager {
     public async getUser(options: GetUserRequestOptions) {
-        const queries = {
+        const queries = omitUndefined({
             u: options.user,
             m: options.gameMode,
             type: options.type,
             event_days: options.eventDays
-        }
+        })
 
         const res = await this.client.request<APIGetUserRequestOptions>({
             path: 'get_user',
@@ -39,35 +40,35 @@ export class UserManager extends BaseManager {
     }
 
     public async getUserBest(options: GetUserBestRequestOptions) {
-        const queries = {
+        const queries = omitUndefined({
             u: options.user,
             m: options.mode,
             type: options.type,
             limit: options.limit
-        }
+        })
 
         const res = await this.client.request<APIGetUserBestRequestOptions>({
             path: 'get_user_best',
             queries
         }) as Array<APIUserBestPerformanceScore>;
 
-        return res.map(v => new BeatmapScore(this.client, v, { mode: options.mode }));
+        return res.map(v => new BeatmapScore(this.client, v, omitUndefined({ mode: options.mode })));
     }
 
     public async getUserRecent(options: GetUserRecentRequestOptions) {
-        const queries = {
+        const queries = omitUndefined({
             u: options.user,
             m: options.mode,
             type: options.type,
             limit: options.limit
-        }
+        })
 
         const res = await this.client.request<APIGetUserRecentRequestOptions>({
             path: 'get_user_recent',
             queries
         }) as Array<APIUserRecentPlayedScore>;
 
-        return res.map(v => new BeatmapScore(this.client, v, { mode: options.mode }));
+        return res.map(v => new BeatmapScore(this.client, v, omitUndefined({ mode: options.mode })));
     }
 
 }

@@ -4,10 +4,11 @@ import { toSqlDate } from '../utils/toSqlDate';
 import { ModsBitField } from "../structures/ModsBitField";
 import { Beatmap } from "../structures/Beatmap";
 import { BaseManager } from "./BaseManager";
+import { omitUndefined } from "../utils/omitUndefined";
 
 export class BeatmapManager extends BaseManager {
     public async getBeatmaps(options: GetBeatmapsRequestOptions = {}) {
-        const queries = {
+        const queries = omitUndefined({
             since: options.since && toSqlDate(options.since),
             s: options.beatmapsetId,
             b: options.beatmapId,
@@ -18,7 +19,7 @@ export class BeatmapManager extends BaseManager {
             h: options.hash,
             limit: options.limit,
             mods: ModsBitField.resolve(options.mods ?? 0)
-        }
+        })
 
         const res = await this.client.request<APIGetBeatmapsRequestOptions>({
             path: 'get_beatmaps',
