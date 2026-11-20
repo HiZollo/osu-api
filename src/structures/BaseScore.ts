@@ -38,7 +38,7 @@ export abstract class BaseScore {
             countGeki: +data.countgeki
         }
         this.perfect = !!+data.perfect;
-        this.enabledMods = new ModsBitField(data.enabled_mods);
+        this.enabledMods = new ModsBitField(data.enabled_mods ?? 0n);
         this.userId = data.user_id;
         this.rank = ScoreRank[data.rank];
         this.mode = other.mode ?? GameMode.Standard;

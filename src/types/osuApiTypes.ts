@@ -83,7 +83,7 @@ export interface APIBasicScore {
     countkatu: string
     countgeki: string
     perfect: '0' | '1';
-    enabled_mods: string;
+    enabled_mods: string | null;
     user_id: string;
     rank: keyof typeof ScoreRank;
 }
