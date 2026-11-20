@@ -2,7 +2,7 @@ import type { Client } from "../Client";
 import type { APIBasicScore, APIBeatmapScore, APIMatchScore, APIUserBestPerformanceScore, APIUserRecentPlayedScore } from "../types/osuApiTypes";
 import type { BeatmapScoreOtherInfo, GetUserRequestOptions, ScoreStatistics } from "../types/interfaces";
 import type { User } from "./User";
-import { GameMode, ScoreRank, UserRequestType } from "../types/enums";
+import { GameMode, Mods, ScoreRank, UserRequestType } from "../types/enums";
 import { ModsBitField } from "./ModsBitField";
 import { AccuracyCalculator } from "../utils/AccuracyCalculator";
 
@@ -49,7 +49,8 @@ export abstract class BaseScore {
             this.beatmapId = other.mapId!;
         }
 
-        this.accuracy = AccuracyCalculator.calculate(this);
+        const isScoreV2 = this.enabledMods.has(Mods.ScoreV2);
+        this.accuracy = AccuracyCalculator.calculate(this, isScoreV2);
     }
 
     public async getPlayer(options: Omit<GetUserRequestOptions, "user" | "type"> = {}): Promise<User | undefined> {
