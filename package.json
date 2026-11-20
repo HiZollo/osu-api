@@ -1,6 +1,6 @@
 {
   "name": "@hizollo/osu-api",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A Node.js library for interacting with osu!api, written in TypeScript.",
   "type": "module",
   "main": "./dist/index.cjs",
