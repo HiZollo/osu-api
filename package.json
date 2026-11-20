@@ -25,7 +25,7 @@
     "test": "node test",
     "type-check": "tsc --noEmit",
     "build": "tsdown",
-    "docgen": "npx typedoc index.ts",
+    "docgen": "typedoc index.ts",
     "deploy": "gh-pages -d docs",
     "predeploy": "npm run docgen",
     "prepublishOnly": "npm run build && npm run deploy"
@@ -51,8 +51,5 @@
   },
   "dependencies": {
     "superagent": "^10.4.2"
-  },
-  "overrides": {
-    "minimatch": "11.0.9"
   }
 }
