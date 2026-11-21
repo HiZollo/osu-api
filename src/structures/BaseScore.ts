@@ -66,8 +66,7 @@ export abstract class BaseScore {
 
     public async getBeatmap() {
         const candidates = await this.client.beatmaps.getBeatmaps({
-            beatmapId: this.beatmapId,
-            mode: this.mode,
+            beatmapId: this.beatmapId
         });
 
         return candidates[0];
